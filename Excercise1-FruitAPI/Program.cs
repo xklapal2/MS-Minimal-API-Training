@@ -3,6 +3,7 @@ using Microsoft.OpenApi.Models;
 
 
 var builder = WebApplication.CreateBuilder(args);
+
 builder.Services.AddDbContext<FruitDb>(opt => opt.UseInMemoryDatabase("FruitList"));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddEndpointsApiExplorer();
@@ -24,9 +25,9 @@ using (var scope = app.Services.CreateScope())
     dbContext.Database.EnsureCreated();
 }
 
- app.MapGet("/fruitlist",  async (FruitDb db) =>
-    await db.Fruits.ToListAsync())
-    .WithTags("Get all fruit"); 
+app.MapGet("/fruitlist", async (FruitDb db) =>
+   await db.Fruits.ToListAsync())
+   .WithTags("Get all fruit");
 
 app.MapGet("/fruitlist/instock", async (FruitDb db) =>
     await db.Fruits.Where(t => t.Instock).ToListAsync())
