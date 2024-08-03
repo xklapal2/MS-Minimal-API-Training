@@ -7,7 +7,7 @@ builder.Services.AddRazorPages();
 // to "FruitAPI", and the also sets the base address used in calls
 builder.Services.AddHttpClient("FruitAPI", httpClient =>
 {
-    httpClient.BaseAddress = new Uri("https://fruitapi-xklapal2.azurewebsites.net/");
+    httpClient.BaseAddress = new Uri("https://fruitapi-xklapal2.azurewebsites.net/fruitlist/");
 });
 
 
